@@ -141,6 +141,7 @@ aucmodelo1
                     dnn = c("Actuales", "Predichos"),
                     levels(ajustadosrose)[1])
  ------------
+ ##### Matriz de Confusión con Remuestreo ROSES
 
 
 
