@@ -120,6 +120,9 @@ aucmodelo1
     cutoff <- slot(max.accuracy,"x.values")[[1]][indice]
     print(c(accuracy=acc,
           cutoff=cutoff))
+
+##### Punto de Corte óptimo que Maximiza el Accuracy
+
 ------------
 
 
