@@ -320,6 +320,7 @@ Esto quiere decir que mi modelo no se encontaba clasificando de buena manera el 
                                    pronostico.remuestreo.punto.corte=preddi)
     head(matriz.comparacion,30)    
 ------------
+# Matriz de Comparaciones
 
 
 
