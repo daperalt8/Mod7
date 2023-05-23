@@ -3,7 +3,7 @@
 ![](https://github.com/daperalt8/Mod7/blob/main/Experto%20en%20Ciencia%20de%20Datos.png)
 ------------
 ![](https://github.com/daperalt8/Mod7/blob/main/Secci%C3%B3n%20A.png)
-#Librerias
+# Líbrerias
 ------------
     biblioteca (extranjera)
     biblioteca (dplyr)
