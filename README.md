@@ -120,10 +120,29 @@ aucmodelo1
     cutoff <- slot(max.accuracy,"x.values")[[1]][indice]
     print(c(accuracy=acc,
           cutoff=cutoff))
-
 ##### Punto de Corte óptimo que Maximiza el Accuracy
-
+![](https://github.com/daperalt8/Mod7/blob/main/Cutoff.png)
 ------------
+- El modelo evaluado con el punto de corte de "0.924" tiene un valor menor del accuracy en comparación con el modelo evaluado del umbral de "0.5" por defecto y con el valor del cutoff, sin embargo la sensitividad y la sensitivad son buenos y clasifica los adecuados con una probabilidad de 0.9796, pero el valor de probabilidad de clasificación de los nacidos vivos con un peso adecuado es insignificante.
+------------
+        train_data <- nuevadata[entrenamiento, ]
+    roses  <- ROSE(peso ~.,
+                           data = train_data,seed = 1)$data
+    modelo.rose <- tune(svm, peso ~ .,
+                         data=roses,
+                         ranges = list(cost = c(0.001, 0.01, 0.1, 1, 5, 10, 50)),
+                         kernel = "linear",
+                         scale=T,
+                         probability = TRUE)
+    mejor.modelo.rose <- modelo.rose$best.model
+    ajustadosrose <- predict(mejor.modelo.rose,
+                              roses, type="prob",probability=TRUE)
+    confusionMatrix(roses$peso,ajustadosrose,
+                    dnn = c("Actuales", "Predichos"),
+                    levels(ajustadosrose)[1])
+ ------------
+
+
 
 
 
