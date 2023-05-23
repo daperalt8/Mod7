@@ -297,7 +297,32 @@ aucmodelo1
     pronostico3
     pronostico4 <- predict(mejor.modelo.rose, newdata3,probability = TRUE)
     pronostico4
-    ------------
+    ------------  
+# Pronóstico
+![](https://github.com/daperalt8/Mod7/blob/main/Pron%C3%B3stico.png)
+------------
+- Para los datos ingresados en las variables, el pronóstico con el mejor modelo sin muestreo lo clasifica como un peso "adecuado", pero el pronóstico del modelo con remuestreo lo clasifica como un peso "no adecuado", esto se debe a que la clasificación para pesos no adecuado era mala para el modelo tuneado, sin embargo esa probabilidad para clasificación mejoró con el remuestreo.
+Esto quiere decir que mi modelo no se encontaba clasificando de buena manera el peso de un nacido vivo que es menor a los 2500 kg.
+------------
+#Comparación de Predicciones
+    
+    predicciones <- attr(ajustados.mejor.modelo,
+                               "probabilities")[,1]
+    predicciones <- as.numeric(predicciones)
+    predd <- factor(ifelse(predicciones>0.924,1,0))
+    
+    predictt <- attr(ajustadosrose,
+                               "probabilities")[,1]
+    predictt <- as.numeric(predictt)
+    preddi <- factor(ifelse(predictt>0.824,1,0))
+    
+    matriz.comparacion <- data.frame(pronóstico.mejor.modelo.punto.corte=predd,
+                                   pronostico.remuestreo.punto.corte=preddi)
+    head(matriz.comparacion,30)    
+------------
+
+
+
     
     
     
