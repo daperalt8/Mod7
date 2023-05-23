@@ -142,8 +142,10 @@ aucmodelo1
                     levels(ajustadosrose)[1])
  ------------
  ##### Matriz de Confusión con Remuestreo ROSES
-
-
+![](https://github.com/daperalt8/Mod7/blob/main/Consusi%C3%B3n%20Matrix%20Remuestreo%20Roses.png)
+------------
+- La matriz de confusión tiene un accuracy casi del mismo valor que el modelo evaluado con 0.924, al igual que la sensitividad y especificidad, lo mejor del modelo con remuestreo ROSE es que mantiene la probabilidad para predecir si un nacido vivo nace con un peso "adecuado" y mejora la probabilidad para predecir si peso del nacido es no "adecuado", en resumen había un problema de desproporcionalidad muestral, ya que se podría decir que el modelo con remuestreo es el mejor de todos los anteriores modelados. 
+------------
 
 
 
