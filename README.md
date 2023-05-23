@@ -321,6 +321,18 @@ Esto quiere decir que mi modelo no se encontaba clasificando de buena manera el 
     head(matriz.comparacion,30)    
 ------------
 # Matriz de Comparaciones
+![](https://github.com/daperalt8/Mod7/blob/main/Matriz%20de%20Comparaciones.png)
+------------
+Si comparamos el mejor modelo evaluado con el punto de corte óptimo y el modelo con el remuestreo por el método ROSE con el punto de corte óptimo podemos concluir lo siguiente:
+
+1. En cuanto a la curva ROC en los dos modelos se podría decir que están clasificando bien. 
+1. El Accuracy para los modelos no difiere significativamente, solo existe entre ellos una diferencia de 0.0017.
+1. La sensitividad entre los dos modelos difiere en 0.0059 no hay una significancia grande.
+1. El modelo tuneado con el punto de corte óptimo clasifica con un valor de "0.9796" cuando el peso del nacido vivo es el adecuado y con el remuestreo y el punto de corte de óptimo clasifica co un valor de "0.7822", esto quiere decir que el modelo sin remuestreo está pronosticando mejor cuando un niño va a nacer con un peso adecuado, sin embargo entre los dos modelos no hay una diferencia que sea tan significativa.
+1. Hay una diferencia muy significativa para clasificar cuando un nacido vivo nacerá con un peso no adecuado, de casi 0.5, en este caso el modelo con remuestreo está pronósticando de mejor manera cuando un nacido vivo nacerá con un peso menor a 2500 kg.
+### En resumen por lo antes expuestos el mejor modelo en mi caso es la del método de remuestreo.
+
+
 
 
 
