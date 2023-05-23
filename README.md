@@ -69,16 +69,46 @@
       theme_bw()+
       theme(plot.title = element_text(hjust = 0.5))
 ```
+------------
  ![](https://github.com/daperalt8/Mod7/blob/main/Imagen2.png)
- 
- - Se observa en el gráfico que la taza de error cae de forma drástica a medida que el costo va aumentando, sin embargo el proceso de cross-validation muestra que existe un costo que consigue un error muy bajo.
+------------
+  - Se observa en el gráfico que la taza de error cae de forma drástica a medida que el costo va aumentando, sin embargo el proceso de cross-validation muestra que existe un costo que consigue un error muy bajo
+ ------------
  ```r
 mejor.modelo <- modelo.tuneado$best.model
 summary(mejor.modelo)
 ```
+------------
+![](https://github.com/daperalt8/Mod7/blob/main/Mejor%20modelo.png)
+------------
+- El mejor modelo que minimiza el error sería el que tenga un costo de 0.1 con 457 vectores de soporte clasificado en dos clases "adecuado" y "no adecuado".
+------------
+```r
+ajustados.mejor.modelo <- predict(mejor.modelo,
+                                  nuevadata[entrenamiento,],
+                                  type="prob",
+                                  probability = T)
+
+confusionMatrix(ajustados.mejor.modelo,
+                nuevadata$peso[entrenamiento],
+                positive = levels(nuevadata$peso)[2])
+
+pred <- prediction(attr(ajustados.mejor.modelo,
+                        "probabilities")[,2],
+                   nuevadata$peso[entrenamiento])
+
+perf <- performance(pred,"tpr","fpr")
 
 
- 
+
+plot(perf,colorize=T,lty=3)
+abline(0,1,col="black")
+
+aucmodelo1 <- performance(pred,measure = "auc")
+aucmodelo1 <- aucmodelo1@y.values[[1]]
+aucmodelo1
+```
+------------
 
 
 
