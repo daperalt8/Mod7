@@ -175,8 +175,36 @@ aucmodelo1
     pronostico2 <- ifelse(attr(pronostico1,"probabilities")[1]>0.924,1,0)
     pronostico2
 ------------
+# Pronóstico sin punto de corte y con punto de corte óptimo
+![](https://github.com/daperalt8/Mod7/blob/main/Pron%C3%B3stico%20sin%20punto%20de%20corte%20y%20con%20punto%20corte.png)
+------------                        
+- La clasificación para el modelo con un corte umbral de 0.5 por defecto clasifica según el valor de las variables de "newdata2" como un niño que nacerá con un peso adecuado sin embargo con un umbral de 0.924 el niño se clasifica como "0", es decir un niño que nacera con un peso no adecuado.A continuación se va a evaluar el modelo con el valor de umbral que está mas distante a la línea de 45.
+------------
+# Evaluando el modelo con un corte de umbral 0.924
 
-                                    
+    umbral1 <- 0.924
+    
+    pred.umbral1 <- attr(ajustados.mejor.modelo,
+                               "probabilities")[,1]
+    
+    pred.umbral1 <- as.numeric(pred.umbral1)
+    
+    
+    pred.cut.umbral1 <- factor(ifelse(pred.umbral1>umbral1,1,0))
+    
+    
+    matriz.corte <- data.frame(real=nuevadata$peso[entrenamiento],
+                                   predicho=pred.cut.umbral1)
+    
+    matriz.corte <- matriz.corte %>% mutate(predicho=recode_factor(predicho,                                                                    `0`="no.adecuado",
+                                                        `1`="adecuado"))
+    
+    
+    
+    confusionMatrix(matriz.corte$predicho,
+                    matriz.corte$real,
+                    positive = "adecuado")
+------------
 - El modelo evaluado con el punto de corte de "0.924" tiene un valor menor del precision en comparación con el modelo evaluado del umbral de "0.5" por defecto y con el valor del cutoff, sin embargo la sensibilidad y la sensitivad son buenos y clasifica los adecuados con una probabilidad de 0.9796, pero el valor de probabilidad de clasificación de los nacidos vivos con un peso adecuado es insignificante.
 ------------
         tren_datos <- nuevosdatos[entrenamiento, ]
