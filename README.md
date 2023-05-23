@@ -7,17 +7,6 @@
 ------------
     biblioteca (extranjera)
     biblioteca (dplyr)
-
-    
-        
-          
-    
-
-        
-        Expandir todo
-    
-    @@ -15,6 +16,7 @@
-  
     biblioteca
     biblioteca (ROCR)
     biblioteca (e1071)
