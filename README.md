@@ -111,6 +111,17 @@ aucmodelo1
 ------------
 ![](https://github.com/daperalt8/Mod7/blob/main/Confusi%C3%B3n%20Matrix%20del%20mejor%20modelo.png)
 ------------
+![](https://github.com/daperalt8/Mod7/blob/main/Curva%20ROC%20del%20mejor%20modelo.png)
+------------
+- El mejor modelo tiene una precisión de clasificación muy bueno ya que su valor está muy cercano a 1, por otra parte clasifica con una probabilidad de 0.9243 el peso del nacido vivo cuando es el adecuado y con una probabilidad de 0.75 cuando el peso no es el adecuado, también la curva ROC es muy buena ya que la curva esta muy cerca de la parte superior sin embargo, la sensitividad es muy alta y la especificidad es muy baja lo que quizás se debe a un problema de desproporcionalidad muestral, lo que se va a corroborar más adelante o podría deberse aun problema del umbral de discriminación que es por defecto 0,5.
+------------
+    indice <- which.max(slot(max.accuracy,"y.values")[[1]])
+    acc <- slot(max.accuracy,"y.values")[[1]][indice]
+    cutoff <- slot(max.accuracy,"x.values")[[1]][indice]
+    print(c(accuracy=acc,
+          cutoff=cutoff))
+------------
+
 
 
 
