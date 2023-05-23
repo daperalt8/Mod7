@@ -16,8 +16,7 @@
     biblioteca (ggplot2)
     biblioteca (ROCR)
 ------------
-
-
+# Exportando Base de Datos desde SPSS
     datos <- read.spss("C:\\Usuarios\\Unemi\\Descargas\\ENV_2017.sav",
                        usar.valor.etiquetas = F,
                        a.data.frame = T)  
