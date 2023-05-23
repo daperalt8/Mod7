@@ -127,41 +127,41 @@ aucmodelo1
 - Según los resultados de la parte superior el umbral óptimo sería de 0.568994, lo que se espera es que el umbral óptimo mejore las predicciones, la especificidad, la sensitividada, lo que permitiría clasificar de una mejor forma cuando el peso de un nacido vivo en la provincia de Manabí es el adecuado y cuando no.
 ------------
 # Evaluación del Modelo con el Punto de Corte Óptimo
-
-umbral <- as.numeric(cutoff)
-
-prediccionescutoff <- attr(ajustados.mejor.modelo,
-                           "probabilities")[,1]
-
-prediccionescutoff <- as.numeric(prediccionescutoff)
-
-
-predCut <- factor(ifelse(prediccionescutoff>umbral,1,0))
-
-
-matrizpuntocorte <- data.frame(real=nuevadata$peso[entrenamiento],
-                               predicho=predCut)
-
-matrizpuntocorte <- matrizpuntocorte %>% mutate(predicho=recode_factor(predicho,
-                                                                        `0`="no.adecuado",
-                                                                        `1`="adecuado"))
-
-
-confusionMatrix(matrizpuntocorte$predicho,
-                matrizpuntocorte$real,
-                positive = "adecuado")
-
-
-
-
-curvaroc <- plot.roc(nuevadata$peso[entrenamiento],
-                     as.vector(prediccionescutoff),
-                     precent=TRUE,
-                     ci=TRUE,
-                     print.auc=TRUE,
-                     threholds="best",
-                     print.thres="best")
-abline(v=cutoff)
+    
+    umbral <- as.numeric(cutoff)
+    
+    prediccionescutoff <- attr(ajustados.mejor.modelo,
+                               "probabilities")[,1]
+    
+    prediccionescutoff <- as.numeric(prediccionescutoff)
+    
+    
+    predCut <- factor(ifelse(prediccionescutoff>umbral,1,0))
+    
+    
+    matrizpuntocorte <- data.frame(real=nuevadata$peso[entrenamiento],
+                                   predicho=predCut)
+    
+    matrizpuntocorte <- matrizpuntocorte %>% mutate(predicho=recode_factor(predicho,
+                                                                            `0`="no.adecuado",
+                                                                            `1`="adecuado"))
+    
+    
+    confusionMatrix(matrizpuntocorte$predicho,
+                    matrizpuntocorte$real,
+                    positive = "adecuado")
+    
+    
+    
+    
+    curvaroc <- plot.roc(nuevadata$peso[entrenamiento],
+                         as.vector(prediccionescutoff),
+                         precent=TRUE,
+                         ci=TRUE,
+                         print.auc=TRUE,
+                         threholds="best",
+                         print.thres="best")
+    abline(v=cutoff)
 ------------
 
 - El modelo evaluado con el punto de corte de "0.924" tiene un valor menor del precision en comparación con el modelo evaluado del umbral de "0.5" por defecto y con el valor del cutoff, sin embargo la sensibilidad y la sensitivad son buenos y clasifica los adecuados con una probabilidad de 0.9796, pero el valor de probabilidad de clasificación de los nacidos vivos con un peso adecuado es insignificante.
