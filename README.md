@@ -25,7 +25,5 @@ set.seed(1234)
     
     ```
 ```
-![] (https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.tooltyp.com%2F8-beneficios-de-usar-imagenes-en-nuestros-sitios-web%2F&psig=AOvVaw0-0V3wFwosmnKRHe0x__yW&ust=1684897332124000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCPj9zei5iv8CFQAAAAAdAAAAABAJ)
-
-
+![https://github.com/
 
