@@ -49,7 +49,7 @@
 ------------
 1. - **Se carga la base de datos de nacidos vivos, y se filtra información para la provincia de Manabí, también se elimina de la base de datos las observaciones que no tienen información, la variable peso se cambia a tipo factor debido a que es la variable de estudio, el peso del nacido vivo se codifica como "1" en el caso de que el peso sea mayor a 2500kg ya que, se considera como un peso adecuado del nacido vivo, y de las otras variables se realiza las transformaciones y categorias necesarias para que nuestro modelo pueda correr
 ------------
-#Base de Datos de Nacidos Vivos
+# Base de Datos de Nacidos Vivos
 ![](https://github.com/daperalt8/Mod7/blob/main/Base%20de%20datos%20sin%20Datawrangling.png)
 ------------
 ```r
@@ -110,7 +110,7 @@ aucmodelo1
 # Matriz de Confusión del Mejor Modelo
 ![](https://github.com/daperalt8/Mod7/blob/main/Confusi%C3%B3n%20Matrix%20del%20mejor%20modelo.png)
 ------------
-#Curva ROC del Mejor Modelo     
+#Curva ROC del Mejor Modelo
 ![](https://github.com/daperalt8/Mod7/blob/main/Curva%20ROC%20del%20mejor%20modelo.png)
 ------------
 - El mejor modelo tiene una precisión de clasificación muy bueno ya que su valor está muy cerca a 1, por otra parte clasifica con una probabilidad de 0.9243 el peso del nacido vivo cuando es el adecuado y con una probabilidad de 0.75 cuando el peso no es el adecuado, también la curva ROC es muy buena ya que la curva está muy cerca de la parte superior sin embargo, la sensibilidad es muy alta y la especificidad es muy baja lo que quizás se debe a un problema de desproporcionalidad muestral, lo que se va a corroborar más adelante o podría deberse aun problema del umbral de discriminación que es por defecto 0,5.
