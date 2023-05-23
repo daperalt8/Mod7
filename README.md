@@ -149,6 +149,7 @@ aucmodelo1
                          print.thres="best")
     abline(v=cutoff)
 ------------
+# Matriz de Clasificación del Mejor Modelo con el Cutoff
 
 - El modelo evaluado con el punto de corte de "0.924" tiene un valor menor del precision en comparación con el modelo evaluado del umbral de "0.5" por defecto y con el valor del cutoff, sin embargo la sensibilidad y la sensitivad son buenos y clasifica los adecuados con una probabilidad de 0.9796, pero el valor de probabilidad de clasificación de los nacidos vivos con un peso adecuado es insignificante.
 ------------
