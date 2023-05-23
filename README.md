@@ -107,7 +107,7 @@ aucmodelo1 <- aucmodelo1@y.valores[[1]]
 aucmodelo1
 ```
 ------------
-#Matriz de Confusión del Mejor Modelo
+# Matriz de Confusión del Mejor Modelo
 ![](https://github.com/daperalt8/Mod7/blob/main/Confusi%C3%B3n%20Matrix%20del%20mejor%20modelo.png)
 ------------
 #Curva ROC del Mejor Modelo     
