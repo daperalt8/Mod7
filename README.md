@@ -2,8 +2,8 @@
 ###### Trabajo final del Módulo 7 del Progama Experto en Ciencia de Datos
 ![](https://github.com/daperalt8/Mod7/blob/main/Experto%20en%20Ciencia%20de%20Datos.png)
 ------------
-![](
-
+![](https://github.com/daperalt8/Mod7/blob/main/Secci%C3%B3n%20A.png)
+------------
     library(foreign)
     library(dplyr)
     library(caret)
