@@ -109,6 +109,8 @@ aucmodelo1 <- aucmodelo1@y.values[[1]]
 aucmodelo1
 ```
 ------------
+![](https://github.com/daperalt8/Mod7/blob/main/Confusi%C3%B3n%20Matrix%20del%20mejor%20modelo.png)
+------------
 
 
 
