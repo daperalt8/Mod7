@@ -3,6 +3,7 @@
 ![](https://github.com/daperalt8/Mod7/blob/main/Experto%20en%20Ciencia%20de%20Datos.png)
 ------------
 ![](https://github.com/daperalt8/Mod7/blob/main/Secci%C3%B3n%20A.png)
+#Librerías
 ------------
     library(foreign)
     library(dplyr)
@@ -15,6 +16,7 @@
     library(ggplot2)
     library(ROCR)
 ------------
+#Exportando Base de Datos desde SPSS
     datos <- read.spss("C:\\Users\\Unemi\\Downloads\\ENV_2017.sav",
                        use.value.labels = F,
                        to.data.frame = T)
@@ -115,6 +117,7 @@ aucmodelo1
 ```
 ------------
 #Matriz de Confusión del Mejor Modelo
+
 ![](https://github.com/daperalt8/Mod7/blob/main/Confusi%C3%B3n%20Matrix%20del%20mejor%20modelo.png)
 ------------
 #Curva ROC del Mejor Modelo
