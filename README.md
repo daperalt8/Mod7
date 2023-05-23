@@ -153,7 +153,29 @@ aucmodelo1
 ![](https://github.com/daperalt8/Mod7/blob/main/Clasificaci%C3%B3n%20del%20mejor%20modelo%20con%20Cutoff.png)
 ------------
 # Curva ROC del Mejor Modelo con el Cutoff
+![](https://github.com/daperalt8/Mod7/blob/main/Curva%20ROC%20con%20el%20punto%20de%20corte%20optimo.png)
+------------
+- El modelo con el punto de corte óptimo no ha mejorado significativamente en la precisión, ni en la especificidad y tampoco tiene mejoras en la sensitividad, de igual manera la curva ROC que en el punto de corte óptimo mi modelo tiene una sensitivad de aproximadamente 0.84, sin embargo la especificidad no ha mejorado en gran manera, se sospecha que hay una desproporcionalidad muestral para clasificar los "1" y los "0". 
+------------
+# Pronóstico fuera de la muestra con punto de corte por defecto (0.5) y con punto de corte de 0.924
 
+    
+    newdata2 <- data.frame(talla=45,
+                           sem_gest=38,
+                           sexo=1,
+                           edad_mad=30,
+                           sabe_leer=1,
+                           con_pren=1,
+                           edad2=900)
+    
+    pronostico1 <- predict(mejor.modelo, newdata2,probability = TRUE)
+    pronostico1
+    
+    
+    pronostico2 <- ifelse(attr(pronostico1,"probabilities")[1]>0.924,1,0)
+    pronostico2
+------------
+                                      
 - El modelo evaluado con el punto de corte de "0.924" tiene un valor menor del precision en comparación con el modelo evaluado del umbral de "0.5" por defecto y con el valor del cutoff, sin embargo la sensibilidad y la sensitivad son buenos y clasifica los adecuados con una probabilidad de 0.9796, pero el valor de probabilidad de clasificación de los nacidos vivos con un peso adecuado es insignificante.
 ------------
         tren_datos <- nuevosdatos[entrenamiento, ]
@@ -244,5 +266,6 @@ aucmodelo1
     pronostico4 <- predict(mejor.modelo.rose, newdata3,probability = TRUE)
     pronostico4
     ------------
+    
     
     
