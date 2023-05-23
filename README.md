@@ -47,6 +47,7 @@
 
 ------------
 1. - **Se carga la base de datos de nacidos vivos, y se filtra información para la provincia de Manabí, también se elimina de la base de datos las observaciones que no tienen información, la variable peso se cambia a tipo factor debido a que es la variable de estudio, el peso del nacido vivo se codifica como "1" en el caso de que el peso sea mayor a 2500kg ya que, se considera como un peso adecuado del nacido vivo, y de las otras variables se realiza las transformaciones y categorías necesarias para que nuestro modelo pueda correr
+#Base de Datos de Nacidos Vivos 
 ![](https://github.com/daperalt8/Mod7/blob/main/Base%20de%20datos%20sin%20Datawrangling.png)
 ------------
  ```r
@@ -70,7 +71,9 @@
       theme(plot.title = element_text(hjust = 0.5))
 ```
 ------------
+
  ![](https://github.com/daperalt8/Mod7/blob/main/Imagen2.png)
+ 
 ------------
   - Se observa en el gráfico que la taza de error cae de forma drástica a medida que el costo va aumentando, sin embargo el proceso de cross-validation muestra que existe un costo que consigue un error muy bajo
  ------------
@@ -79,6 +82,7 @@ mejor.modelo <- modelo.tuneado$best.model
 summary(mejor.modelo)
 ```
 ------------
+#Mejor modelo através del Cross-Validation
 ![](https://github.com/daperalt8/Mod7/blob/main/Mejor%20modelo.png)
 ------------
 - El mejor modelo que minimiza el error sería el que tenga un costo de 0.1 con 457 vectores de soporte clasificado en dos clases "adecuado" y "no adecuado".
@@ -109,8 +113,10 @@ aucmodelo1 <- aucmodelo1@y.values[[1]]
 aucmodelo1
 ```
 ------------
+#Matriz de Confusión del Mejor Modelo
 ![](https://github.com/daperalt8/Mod7/blob/main/Confusi%C3%B3n%20Matrix%20del%20mejor%20modelo.png)
 ------------
+#Curva ROC del Mejor Modelo
 ![](https://github.com/daperalt8/Mod7/blob/main/Curva%20ROC%20del%20mejor%20modelo.png)
 ------------
 - El mejor modelo tiene una precisión de clasificación muy bueno ya que su valor está muy cercano a 1, por otra parte clasifica con una probabilidad de 0.9243 el peso del nacido vivo cuando es el adecuado y con una probabilidad de 0.75 cuando el peso no es el adecuado, también la curva ROC es muy buena ya que la curva esta muy cerca de la parte superior sin embargo, la sensitividad es muy alta y la especificidad es muy baja lo que quizás se debe a un problema de desproporcionalidad muestral, lo que se va a corroborar más adelante o podría deberse aun problema del umbral de discriminación que es por defecto 0,5.
@@ -146,6 +152,11 @@ aucmodelo1
 ------------
 - La matriz de confusión tiene un accuracy casi del mismo valor que el modelo evaluado con 0.924, al igual que la sensitividad y especificidad, lo mejor del modelo con remuestreo ROSE es que mantiene la probabilidad para predecir si un nacido vivo nace con un peso "adecuado" y mejora la probabilidad para predecir si peso del nacido es no "adecuado", en resumen había un problema de desproporcionalidad muestral, ya que se podría decir que el modelo con remuestreo es el mejor de todos los anteriores modelados. 
 ------------
+
+#### # ROC del mejor modelo vs ROC con remuestreo ROSES
+![](https://github.com/daperalt8/Mod7/blob/main/ROC%20mejor%20%2Codelo%20vs%20ROC%20con%20remuestreo%20ROSES.png)
+------------
+- Según el gráfico de la parte superior parecería que no hay diferencia significativa en las dos curvas ROC, sin embargo cuando observamos la matriz de confusión de las dos curvas podemos darnos cuenta que hay diferencia significativa en los valores de la especifficidad y sensitividad, así tambien en las probabilidades para clasificar un "peso adecuado" y "no adecuado"
 
 
 
