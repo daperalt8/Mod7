@@ -1,6 +1,7 @@
 # Módulo 7: Machine Learning II: Modelos para la Clasificación y Segmentación
 ###### Trabajo final del Módulo 7 del Progama Experto en Ciencia de Datos
-![](
+![](https://github.com/daperalt8/Mod7/blob/main/Experto%20en%20Ciencia%20de%20Datos.png)
+
     library(foreign)
     library(dplyr)
     library(caret)
@@ -50,5 +51,6 @@
 
 
 ![](https://github.com/daperalt8/Mod7/blob/main/Imagen2.png)
+
 
 
