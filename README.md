@@ -14,10 +14,7 @@
     library(ROSE)
     library(ggplot2)
     library(ROCR)
-
 ------------
-
-
     datos <- read.spss("C:\\Users\\Unemi\\Downloads\\ENV_2017.sav",
                        use.value.labels = F,
                        to.data.frame = T)
@@ -49,10 +46,37 @@
                    `1`="adecuado"))
 
 ------------
-1. - **Se carga la base de datos de nacidos vivos, y se filtra información para la provincia de Manabí, también se elimina de la base de datos las observaciones que no tienen información, la variable peso se cambia a tipo factor debido a que es la variable de estudio, el peso del nacido vivo se codifica como "1" en el caso de que el peso sea mayor a 2500kg ya que, se considera como un peso adecuado del nacido vivo, y de las otras variables se realiza las transformaciones y categorías necesarias para que nuestro modelo pueda correr.**
-
-
-![](https://github.com/daperalt8/Mod7/blob/main/Imagen2.png)
+1. - **Se carga la base de datos de nacidos vivos, y se filtra información para la provincia de Manabí, también se elimina de la base de datos las observaciones que no tienen información, la variable peso se cambia a tipo factor debido a que es la variable de estudio, el peso del nacido vivo se codifica como "1" en el caso de que el peso sea mayor a 2500kg ya que, se considera como un peso adecuado del nacido vivo, y de las otras variables se realiza las transformaciones y categorías necesarias para que nuestro modelo pueda correr
+![](https://github.com/daperalt8/Mod7/blob/main/Base%20de%20datos%20sin%20Datawrangling.png)
+------------
+ ```r
+ set.seed(1234)
+    entrenamiento <- createDataPartition(nuevadata$peso,
+                                         p=0.1,list=F)
+    modelo.tuneado <- tune(svm,
+                            peso ~.,
+                            data=nuevadata[entrenamiento,],
+                            ranges = list(cost=c(0.001,0.01,0.1,1,5,10,50)),
+                            kernel="linear",
+                            scale=T,
+                            probability=TRUE)
+    
+    ggplot(data=modelo.tuneado$performances,
+           aes(x=cost,y=error))+
+      geom_line()+
+      geom_point()+
+      labs(title="Error de validacion vs hipeparametro C")+
+      theme_bw()+
+      theme(plot.title = element_text(hjust = 0.5))
+```
+ ![](https://github.com/daperalt8/Mod7/blob/main/Imagen2.png)
+ 
+ - Se observa en el gráfico que la taza de error cae de forma drástica a medida que el costo va aumentando, sin embargo el proceso de cross-validation muestra que existe un costo que consigue un error muy bajo.
+ ```r
+mejor.modelo <- modelo.tuneado$best.model
+summary(mejor.modelo)
+```
+ 
 
 
 
