@@ -151,3 +151,66 @@ aucmodelo1
 ![](https://github.com/daperalt8/Mod7/blob/main/ROC%20mejor%20%2Codelo%20vs%20ROC%20con%20remuestreo%20ROSES.png)
 ------------
 - Según el gráfico de la parte superior parecería que no hay diferencia significativa en las dos curvas ROC, sin embargo cuando observamos la matriz de confusión de las dos curvas podemos darnos cuenta que hay diferencia significativa en los valores de la especifficidad y sensibilidad, así también en las probabilidades para clasificar un "peso adecuado" y "no adecuado"
+------------
+# Pronóstico Tuneado vs Pronóstico con Remuestreo ROSES
+
+    
+    pred1 <- prediction(attr(ajustadosrose,
+                            "probabilities")[,2],
+                       nuevadata$peso[entrenamiento])
+    
+    max.accuracy1 <- performance(pred1,measure = "acc")
+    indice <- which.max(slot(max.accuracy1,"y.values")[[1]])
+    acc <- slot(max.accuracy1,"y.values")[[1]][indice]
+    cutoff1 <- slot(max.accuracy1,"x.values")[[1]][indice]
+    
+    print(c(accuracy=acc,
+          cutoff1=cutoff))
+    
+    puntocorte <- as.numeric(cutoff1)
+    
+    prediccionescut <- attr(ajustadosrose,
+                               "probabilities")[,1]
+    
+    prediccionescut <- as.numeric(prediccionescut)
+    
+    
+    predCutt <- factor(ifelse(prediccionescut>puntocorte,1,0))
+    
+    
+    matriz <- data.frame(real=nuevadata$peso[entrenamiento],
+                                   predicho=predCutt)
+    
+    matriz <- matriz %>% mutate(predicho=recode_factor(predicho,
+                                                                            `0`="no.adecuado",
+                                                                            `1`="adecuado"))
+    
+    
+    confusionMatrix(matriz$predicho,
+                    matriz$real,
+                    positive = "adecuado")
+    
+    
+    
+    curvaroc1 <- plot.roc(nuevadata$peso[entrenamiento],
+                         as.vector(prediccionescut),
+                         precent=TRUE,
+                         ci=TRUE,
+                         print.auc=TRUE,
+                         threholds="best",
+                         print.thres="best")
+    
+    newdata3 <- data.frame(talla=45,
+                           sem_gest=38,
+                           sexo=1,
+                           edad_mad=30,
+                           sabe_leer=1,
+                           con_pren=1,
+                           edad2=900)
+    
+    pronostico3 <- predict(mejor.modelo, newdata3,probability = TRUE)
+    pronostico3
+    
+    pronostico4 <- predict(mejor.modelo.rose, newdata3,probability = TRUE)
+    pronostico4
+    
