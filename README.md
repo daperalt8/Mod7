@@ -120,7 +120,8 @@ aucmodelo1
     corte <- ranura(máx.precisión,"x.valores")[[1]][índice]
     imprimir (c (precisión = acc,
           corte=corte))
-#Punto de Corte Óptimo que Maximiza el Accuracy
+------------
+# Punto de Corte Óptimo que Maximiza el Accuracy
 ![](https://github.com/daperalt8/Mod7/blob/main/Cutoff.png)
 ------------
 - El modelo evaluado con el punto de corte de "0.924" tiene un valor menor del precision en comparación con el modelo evaluado del umbral de "0.5" por defecto y con el valor del cutoff, sin embargo la sensibilidad y la sensitivad son buenos y clasifica los adecuados con una probabilidad de 0.9796, pero el valor de probabilidad de clasificación de los nacidos vivos con un peso adecuado es insignificante.
@@ -141,12 +142,12 @@ aucmodelo1
                     dnn = c("Actuales", "Predichos"),
                     niveles(rosa ajustados)[1])
 ------------
-#Matriz de Confusión con Remuestreo ROSES
+# Matriz de confusión con Remuestreo ROSES
 ![](https://github.com/daperalt8/Mod7/blob/main/Consusi%C3%B3n%20Matrix%20Remuestreo%20Roses.png)
 ------------
 - La matriz de confusión tiene una precisión casi del mismo valor que el modelo evaluado con 0.924, al igual que la sensibilidad y especificidad, lo mejor del modelo con remuestreo ROSE es que mantiene la probabilidad para predecir si un nacido vivo nace con un peso " adecuado" y mejora la probabilidad para predecir si el peso del nacido no es "adecuado", en resumen había un problema de desproporcionalidad muestral, ya que se podría decir que el modelo con remuestreo es el mejor de todos los modelados anteriores.
 ------------
-#ROC del Mejor Modelo vs ROC con Remuestreo ROSES
+# ROC del Mejor Modelo vs ROC con Remuestreo ROSES
 ![](https://github.com/daperalt8/Mod7/blob/main/ROC%20mejor%20%2Codelo%20vs%20ROC%20con%20remuestreo%20ROSES.png)
 ------------
 - Según el gráfico de la parte superior parecería que no hay diferencia significativa en las dos curvas ROC, sin embargo cuando observamos la matriz de confusión de las dos curvas podemos darnos cuenta que hay diferencia significativa en los valores de la especifficidad y sensibilidad, así también en las probabilidades para clasificar un "peso adecuado" y "no adecuado"
