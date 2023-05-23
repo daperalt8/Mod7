@@ -83,7 +83,7 @@ mejor.modelo <- modelo.tuneado$best.modelo
 resumen(mejor.modelo)
 ```
 ------------
-#Mejor modelo a través del Cross-Validation
+# Mejor Modelo a través del Cross Validation
 ![](https://github.com/daperalt8/Mod7/blob/main/Mejor%20modelo.png)
 ------------
 - El mejor modelo que minimice el error sería el que tenga un costo de 0.1 con 457 vectores de soporte clasificado en dos clases "adecuado" y "no adecuado".
