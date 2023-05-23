@@ -213,4 +213,6 @@ aucmodelo1
     
     pronostico4 <- predict(mejor.modelo.rose, newdata3,probability = TRUE)
     pronostico4
+    ------------
+    
     
