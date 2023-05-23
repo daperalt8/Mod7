@@ -25,5 +25,5 @@ set.seed(1234)
     
     ```
 ```
-![https://github.com/
+![](https://github.com/daperalt8/Mod7/blob/main/Imagen2.png)
 
